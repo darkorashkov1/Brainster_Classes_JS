@@ -4,11 +4,105 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Events</title>
 </head>
+<style>
+  body {
+    height: 10000vh
+  }
+
+  .form {
+    width: 100px;
+    height: 50px;
+    border: 2px solid blue;
+    align-content: center;
+    text-align: center;
+  }
+
+  .hover {
+    background-color: pink;
+  }
+
+  .errorMsg {
+    color: red;
+    font-weight: bold;
+    display: none;
+  }
+
+  .emailColor {
+    background-color: lightgray;
+  }
+
+  span {
+    color: red;
+    font-size: 14px;
+  }
+</style>
 
 <body>
 
+  <!-- EVENTS 1 -->
+
+  <!-- <button>Hello world!</button>
+  <div>Hello</div> -->
+
+  <!-- <div class="form">
+    <button>Click me!</button>
+  </div>
+
+  <input type="text" placeholder="email">
+  <span class="errorMsg">Invalid email!</span> -->
+
+  <!-- Exercise -->
+
+  <div class="row">
+    <label for="name">Name</label>
+    <input id="name" type="text" placeholder="Enter name">
+  </div>
+
+  <div class="row">
+    <label for="about">About me</label>
+    <textarea id="about" aria-label="About" id="aboutMe" placeholder="Type here..."></textarea>
+  </div>
+
+  <button type="submit">Submit</button>
+  <br><br>
+  <label for="agree-terms">Agree to terms:</label>
+  <input type="checkbox" id="agree-terms">
+  <br>
+  <button type="submit">Submit</button>
+  <br><br>
+
+  <label for="select-color">Select color:</label>
+  <select name="select-color" id="select-color">
+    <option value="none"></option>
+    <option value="red">Red</option>
+    <option value="green">Green</option>
+    <option value="yellow">Yellow</option>
+  </select>
+
+  <div class="row">
+    <label for="profession">Profession</label>
+    <select name="profession" id="select-box">Select a profession:
+      <option value="Student">Student</option>
+      <option value="Developer">Developer</option>
+      <option value="Designer">Designer</option>
+    </select>
+  </div>
+
+  <label for="email">Email</label>
+  <input type="email" id="email" placeholder="enter email">
+  <br>
+  <span>Wrong e-mail!</span>
+
+  <!-- EVENTS 2 -->
+
+  <!-- <div class="row">
+    <label for="name">Name</label>
+    <input id="name" type="text" placeholder="Enter name">
+  </div> -->
+
+  <script src="./script.js"></script>
 </body>
 
 </html>
