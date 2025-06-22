@@ -204,12 +204,6 @@ const createQuantityPriceTable = () => {
     }
 
     // Highlight only price cell if price > 1000
-    if (price > 1000) {
-      tdPrice.style.backgroundColor = "red";
-      tdPrice.style.color = "white";
-      tdPrice.style.fontWeight = "bold";
-    }
-
     tr.appendChild(tdQuantity);
     tr.appendChild(tdPrice);
     tbody.appendChild(tr);
