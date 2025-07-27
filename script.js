@@ -280,30 +280,32 @@
 // c) Check if the element has some value, and if it has, give it a green border color to signal that it is
 // complete.
 
-const email = document.querySelector("#email");
-const span = document.querySelector("span");
+// const email = document.querySelector("#email");
+// const span = document.querySelector("span");
 
-window.addEventListener("load", () => {
-  span.style.display = "none";
-});
+// window.addEventListener("load", () => {
+//   span.style.display = "none";
+// });
 
-const onBlur = () => {
-  email.classList.remove("emailColor");
-  const emailValue = email.value;
+// const onBlur = () => {
+//   email.classList.remove("emailColor");
+//   const emailValue = email.value;
 
-  if (emailValue && emailValue.includes("@")) {
-    email.style.border = "2px, solid, green";
-  } else {
-    email.style.border = "2px, solid, red";
-    span.style.display = "block";
-  }
-};
+//   if (emailValue && emailValue.includes("@")) {
+//     email.style.border = "2px, solid, green";
+//   } else {
+//     email.style.border = "2px, solid, red";
+//     span.style.display = "block";
+//   }
+// };
 
-const onFocus = () => {
-  email.classList.add("emailColor");
-  email.style.border = "";
-  span.style.display = "none";
-};
+// const onFocus = () => {
+//   email.classList.add("emailColor");
+//   email.style.border = "";
+//   span.style.display = "none";
+// };
 
-email.addEventListener("focus", onFocus);
-email.addEventListener("blur", onBlur);
+// email.addEventListener("focus", onFocus);
+// email.addEventListener("blur", onBlur);
+
+// Events 3
