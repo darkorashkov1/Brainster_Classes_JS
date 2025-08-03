@@ -33,9 +33,22 @@
     background-color: lightgray;
   }
 
+  .border {
+    border: 3px solid orange;
+  }
+
   span {
     color: red;
     font-size: 14px;
+  }
+
+  .address1,
+  .address2,
+  .zipCode,
+  .city,
+  .state,
+  .country {
+    visibility: hidden;
   }
 </style>
 
@@ -104,7 +117,29 @@
 
   <!-- EVENTS 3 -->
 
+  <!-- <input id="userInput" type="text" placeholder="Enter Username">
+  <input id="passwordInput" type="text" placeholder="Enter Password"> -->
 
+  <!-- <form action="submit">
+    <input id="address1" type="text" placeholder="Address 1">
+    <span class="address1">Enter valid address</span><br>
+    <input id="address2" type="text" placeholder="Address 2">
+    <span class="address2">Enter valid address</span><br>
+    <input id="zipCode" type="text" placeholder="Zip Code">
+    <span class="zipCode">Enter valid Zip Code</span><br>
+    <input id="city" type="text" placeholder="City">
+    <span class="city">Enter valid City</span><br>
+    <input id="state" type="text" placeholder="State">
+    <span class="state">Enter valid State</span><br>
+    <input id="country" type="text" placeholder="Country">
+    <span class="country">Enter valid Country</span><br>
+    <button id="submitBtn" type="submit">Submit</button>
+    <button id="reset" type="reset">Reset</button>
+  </form> -->
+
+  <input type="text" placeholder="Enter number 0–9" min="0" max="9">
+  <button type="submit">Check</button><br>
+  <p id="result"></p>
 
   <script src="./script.js"></script>
 </body>

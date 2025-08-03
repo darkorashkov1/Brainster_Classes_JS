@@ -309,3 +309,141 @@
 // email.addEventListener("blur", onBlur);
 
 // Events 3
+
+// Exercise 1
+
+// const newButtons = +prompt("Enter number of buttons");
+
+// function createButtons(count) {
+//   for (let i = 1; i <= count; i++) {
+//     const newBtn = document.createElement("button");
+//     newBtn.textContent = [i];
+//     newBtn.classList.add("btn", "btn-primary", "m-2");
+//     document.body.appendChild(newBtn);
+//   }
+// }
+
+// createButtons(newButtons);
+
+// const buttons = document.querySelectorAll("button");
+
+// for (let e = 0; e < buttons.length; e++) {
+//   buttons[e].addEventListener("click", (event) => {
+//     console.log(event.target.textContent);
+//   });
+// }
+
+// Exercise 2
+
+// const userInput = document.querySelector("#userInput");
+// const passwordInput = document.querySelector("#passwordInput");
+
+// [userInput, passwordInput].forEach((input) => {
+//   input.style.outline = "none";
+
+//   input.addEventListener("focus", () => {
+//     input.classList.add("border");
+//   });
+
+//   input.addEventListener("blur", () => {
+//     input.classList.remove("border");
+//   });
+// });
+
+// Exercise 3
+
+// const inputs = [
+//   document.querySelector("#address1"),
+//   document.querySelector("#address2"),
+//   document.querySelector("#zipCode"),
+//   document.querySelector("#city"),
+//   document.querySelector("#state"),
+//   document.querySelector("#country"),
+// ];
+
+// const form = document.querySelector("form");
+// const resetBtn = document.querySelector("#reset");
+
+// const handleSubmit = (e) => {
+//   e.preventDefault();
+//   let isValid = true;
+
+//   inputs.forEach((input) => {
+//     const errorSpan = document.querySelector(`.${input.id}`);
+//     if (input.value.trim().length >= (input.id.includes("address") ? 6 : 3)) {
+//       input.style.backgroundColor = "lightGreen";
+//       errorSpan.style.visibility = "hidden";
+//     } else {
+//       input.style.backgroundColor = "lightCoral";
+//       errorSpan.style.visibility = "visible";
+//       isValid = false;
+//     }
+//   });
+
+//   if (isValid) {
+//     console.log("Form submitted successfully!");
+//   }
+// };
+
+// form.addEventListener("submit", handleSubmit);
+
+// resetBtn.addEventListener("click", () => {
+//   inputs.forEach((input) => {
+//     const errorSpan = document.querySelector(`.${input.id}`);
+//     input.style.backgroundColor = "";
+//     errorSpan.style.visibility = "hidden";
+//   });
+// });
+
+// Exercise 4 - Ping/Pong
+
+// function handlePing() {
+//   console.log("Ping");
+
+//   setTimeout(() => {
+//     handlePong();
+//   }, 1000);
+// }
+// function handlePong() {
+//   console.log("Pong");
+// }
+// const invokePing = setInterval(() => {
+//   handlePing();
+// }, 2000);
+
+// const btn = document.createElement("button");
+// btn.textContent = "STOP";
+// document.body.append(btn);
+// btn.addEventListener("click", () => {
+//   clearInterval(invokePing);
+// });
+
+// Exercise 5 - Homework
+
+const input = document.querySelector("input");
+const btn = document.querySelector("button");
+const result = document.querySelector("#result");
+
+const game = () => {
+  const inputValue = Number(input.value);
+  const randomNumber = Math.floor(Math.random() * 10);
+
+  if (isNaN(inputValue) || inputValue < 0 || inputValue > 9) {
+    result.textContent = "Please enter a valid number between 0 and 9.";
+    result.style.color = "red";
+    return;
+  }
+
+  if (inputValue === randomNumber) {
+    result.textContent = "DRAW!";
+  } else if (inputValue > randomNumber) {
+    result.textContent = "You win!";
+  } else {
+    result.textContent = `Computer wins with ${randomNumber}`;
+  }
+
+  result.style.color = "black";
+  input.value = "";
+};
+
+btn.addEventListener("click", game);
