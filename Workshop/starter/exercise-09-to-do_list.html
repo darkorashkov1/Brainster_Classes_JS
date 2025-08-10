@@ -1,0 +1,30 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Exercise 09</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
+</head>
+
+<body>
+  <div class="container">
+    <h2 class="mt-4">To-Do List</h2>
+    <form id="taskForm">
+      <input type="text" id="taskDescription" class="form-control mt-3" placeholder="Task description" required />
+      <select title="select" id="taskPriority" class="form-control mt-3">
+        <option value="high">High</option>
+        <option value="medium">Medium</option>
+        <option value="low">Low</option>
+      </select>
+      <button type="submit" class="btn btn-primary mt-3">Add Task</button>
+    </form>
+
+    <ul id="taskList" class="list-group mt-4"></ul>
+  </div>
+
+  <script src="./exercise-09.js"></script>
+</body>
+
+</html>
