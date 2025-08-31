@@ -665,3 +665,391 @@
 //
 
 // Objects 4
+
+// function Person(name) {
+//   this.name = name;
+// }
+
+// Person.prototype.sayName = function () {
+//   alert(this.name);
+// };
+
+// function Doctor(name, experience) {
+//   Person.call(this, name);
+
+//   this.experience = experience;
+// }
+
+// Doctor.prototype = Object.create(Person.prototype);
+// Doctor.prototype.constructor = Doctor;
+
+// function Parent(name, noOfKids) {
+//   Person.call(this, name);
+
+//   this.noOfKids = noOfKids;
+// }
+
+// Parent.prototype = Object.create(Person.prototype);
+// Parent.prototype.constructor = Parent;
+
+// const per1 = new Doctor("James", 30);
+// const per2 = new Parent("John", 2);
+
+// console.log(per1.sayName());
+// console.log(per2.sayName());
+
+// Super class
+
+// class Person {
+//   constructor(name) {
+//     this.name = name;
+//   }
+
+//   sayName() {
+//     console.log(this.name);
+//   }
+// }
+
+// class Doctor extends Person {
+//   constructor(name, experience) {
+//     // Super calls the Person's constructor (inherited class)
+//     super(name);
+//     this.experience = experience;
+//   }
+// }
+
+// class Parent extends Person {
+//   constructor(name, noOfKids) {
+//     // Super calls the Person's constructor (inherited class)
+//     super(name);
+//     this.noOfKids = noOfKids;
+//   }
+// }
+
+// const newDoctor = new Doctor("Harry", 35);
+// const newParent = new Parent("John", 2);
+
+// console.log(newDoctor);
+// console.log(newParent);
+
+// Exercise 1
+
+// Class
+
+// class Person {
+//   constructor(firstName, lastName) {
+//     this.firstName = firstName;
+//     this.lastName = lastName;
+//   }
+// }
+// const newPerson = new Person("Harry", "Dresden");
+
+// console.log(newPerson);
+
+// Function
+
+// function Person(firstName, lastName) {
+//   this.firstName = firstName;
+//   this.lastName = lastName;
+// }
+
+// const newPerson = new Person("Harry", "Dresden");
+
+// console.log(newPerson);
+
+// Exercise 2
+// 1. After instantiating a person, add a new method to the Person object prototype: sayFullName, which
+// simply alert the first and last name of a person instance.
+// 2. Invoke the new method on the existing instance.
+
+// function Person(firstName, lastName) {
+//   this.firstName = firstName;
+//   this.lastName = lastName;
+// }
+// Person.prototype.sayFullName = function () {
+//   alert(`${this.firstName} ${this.lastName}`);
+// };
+
+// const person = new Person("Darko", "Rashkov");
+// person.sayFullName();
+
+// console.log(person);
+
+// Exercise 3
+// 1. Create a new object prototype called Programmer. In addition to receiving firstName and lastName
+// as input arguments, it should also receive a favoriteLanguage argument.
+// 2. It also should inherit the prototype from the Person object prototype - that means, it should have a
+// sayFullName method without it explicitly being defined in the Programmer object prototype (see
+// slide 12 for a hint).
+// 3. Add a new method to the Programmer object prototype: sayFavoriteLanguage, which should alert
+// their favoriteLanguage.
+// 4. Create a new Programmer, and call the sayFullName and sayFavoriteLanguage methods.
+
+// function Person(firstName, lastName) {
+//   this.firstName = firstName;
+//   this.lastName = lastName;
+// }
+// Person.prototype.sayFullName = function () {
+//   alert(`${this.firstName} ${this.lastName}`);
+// };
+
+// const person = new Person("John", "Doe");
+// person.sayFullName();
+
+// console.log(person);
+
+// function Programmer(firstName, lastName, favoriteLanguage) {
+//   Person.call(this, firstName, lastName);
+
+//   this.favoriteLanguage = favoriteLanguage;
+// }
+
+// Programmer.prototype = Object.create(Person.prototype);
+// Programmer.prototype.constructor = Programmer;
+
+// Programmer.prototype.sayFavoriteLanguage = function () {
+//   console.log(`Favorite language is:`, this.favoriteLanguage);
+// };
+
+// const programmer = new Programmer("Darko", "Rashkov", "JavaScript");
+// programmer.sayFullName();
+// programmer.sayFavoriteLanguage();
+
+// Exercise 4
+// Rewrite exercise III using classes. Same rules, same inheritance, but use classes instead of object prototypes.
+
+// class Person {
+//   constructor(firstName, lastName) {
+//     this.firstName = firstName;
+//     this.lastName = lastName;
+//   }
+
+//   sayFullName() {
+//     console.log(`Programmer's name is:`, this.firstName, this.lastName);
+//   }
+// }
+
+// class Programmer extends Person {
+//   constructor(firstName, lastName, favoriteLanguage) {
+//     super(firstName, lastName);
+//     this.favoriteLanguage = favoriteLanguage;
+//   }
+//   sayFavoriteLanguage() {
+//     console.log(
+//       `${this.firstName} ${this.lastName}'s favorite language is ${this.favoriteLanguage}`
+//     );
+//   }
+// }
+
+// const programmer = new Programmer("Darko", "Rashkov", "JavaScript");
+// programmer.sayFullName();
+// programmer.sayFavoriteLanguage();
+
+// console.log(programmer);
+
+// Exercise 5
+// Let’s rewrite the code from the previous lecture and homework (the dog and cat one):
+// 1. Create an empty array called “dogs”.
+// 2. Define an Animal class (or object prototype), which has a name and color property.
+// 3. Make a Dog class (or object prototype) that extends the Animal class.
+// 4. (In html) create two input fields (with different ids) and a button that says “Add dog”.
+// 5. Create a function which:
+// a. Gets the values from the two input fields
+// b. Creates a new “dog” instance using the first value as name and the second as color.
+// c. Adds the newly created dog object to the array.
+// d. Adds the newly created dog in an HTML table.
+// e. Logs in the console the whole “dogs” array
+// 6. Invoke the function when the button gets clicked (using “click” with addEventListener)
+// 7. The dog class should also have an extra property called animalType, which equals to 'dog'.
+// 8. Whenever a new animal is entered, clear the value from the inputs.
+
+// let dogs = [];
+// let nextId = 1;
+// let editingIndex = -1;
+
+// class Animal {
+//   constructor(name, color, id) {
+//     this.name = name;
+//     this.color = color;
+//     this.id = id;
+//   }
+// }
+
+// class Dog extends Animal {
+//   constructor(name, color, id) {
+//     super(name, color, id);
+//     this.animalType = "dog";
+//   }
+// }
+
+// const nameInput = document.querySelector("#nameInput");
+// const colorInput = document.querySelector("#colorInput");
+// const addDogBtn = document.querySelector("#addDogBtn");
+// const dogList = document.querySelector("#dogList");
+
+// function renderList() {
+//   dogList.innerHTML = "";
+//   dogs.forEach((dog, index) => {
+//     const li = document.createElement("li");
+//     li.textContent = `${dog.name} - ${dog.color}`;
+
+//     const editBtn = document.createElement("button");
+//     editBtn.textContent = "Edit";
+//     editBtn.style.marginLeft = "8px";
+
+//     editBtn.addEventListener("click", () => {
+//       nameInput.value = dog.name;
+//       colorInput.value = dog.color;
+//       editingIndex = index;
+//       addDogBtn.textContent = "Save";
+//     });
+
+//     li.appendChild(editBtn);
+//     dogList.appendChild(li);
+//   });
+// }
+
+// function addOrSaveDog() {
+//   const name = nameInput.value.trim();
+//   const color = colorInput.value.trim();
+//   if (!name || !color) {
+//     console.log("Please enter both name and color!");
+//     return;
+//   }
+
+//   if (editingIndex === -1) {
+//     // ADD
+//     dogs.push(new Dog(name, color, nextId));
+//     nextId++;
+//   } else {
+//     // EDIT
+//     dogs[editingIndex].name = name;
+//     dogs[editingIndex].color = color;
+//     editingIndex = -1;
+//     addDogBtn.textContent = "Add dog";
+//   }
+
+//   nameInput.value = "";
+//   colorInput.value = "";
+//   renderList();
+//   console.log(dogs);
+// }
+
+// addDogBtn.addEventListener("click", addOrSaveDog);
+
+// Exercise 6
+// Extend the previous exercise:
+// 1. Define an extra animal type (Cat, Bird...) which extends Animal. Just like Dog, it should also have an
+// animalType property which has the value of 'cat' or 'bird', as appropriate.
+// 2. Add a dropdown next to the text inputs which contains all of the possible animal types. (also in the
+// homework, so if you did it, use that)
+// 7 3. When a new animal is created (Dog, Bird, Cat...) create an instance of the appropriate type.
+
+let animals = [];
+let nextId = 1;
+let editingIndex = -1;
+
+class Animal {
+  constructor(name, color, id) {
+    this.name = name;
+    this.color = color;
+    this.id = id;
+  }
+}
+
+class Dog extends Animal {
+  constructor(name, color, id) {
+    super(name, color, id);
+    this.animalType = "dog";
+  }
+}
+class Cat extends Animal {
+  constructor(name, color, id) {
+    super(name, color, id);
+    this.animalType = "cat";
+  }
+}
+class Bird extends Animal {
+  constructor(name, color, id) {
+    super(name, color, id);
+    this.animalType = "bird";
+  }
+}
+
+const nameInput = document.querySelector("#nameInput");
+const colorInput = document.querySelector("#colorInput");
+const typeSelect = document.querySelector("#typeSelect");
+const addAnimalBtn = document.querySelector("#addAnimalBtn"); // FIXED ID
+const animalList = document.querySelector("#animalList");
+
+function renderList() {
+  animalList.innerHTML = "";
+  animals.forEach((animal, index) => {
+    const li = document.createElement("li");
+    li.textContent = `${animal.name} - ${animal.color} (${animal.animalType})`;
+
+    // Edit button
+    const editBtn = document.createElement("button");
+    editBtn.textContent = "Edit";
+    editBtn.style.marginLeft = "8px";
+
+    editBtn.addEventListener("click", () => {
+      nameInput.value = animal.name;
+      colorInput.value = animal.color;
+      typeSelect.value = animal.animalType;
+      editingIndex = index;
+      addAnimalBtn.textContent = "Save";
+    });
+
+    // Delete button
+    const deleteBtn = document.createElement("button");
+    deleteBtn.textContent = "Delete";
+    deleteBtn.style.marginLeft = "8px";
+    deleteBtn.addEventListener("click", () => {
+      animals.splice(index, 1);
+      renderList();
+    });
+
+    li.appendChild(editBtn);
+    li.appendChild(deleteBtn);
+    animalList.appendChild(li);
+  });
+}
+
+function addOrSaveAnimal() {
+  const name = nameInput.value.trim();
+  const color = colorInput.value.trim();
+  const type = typeSelect.value;
+
+  if (!name || !color || !type) {
+    console.log("Please fill all fields!");
+    return;
+  }
+
+  if (editingIndex === -1) {
+    // ADD new animal
+    let newAnimal;
+    if (type === "dog") newAnimal = new Dog(name, color, nextId);
+    else if (type === "cat") newAnimal = new Cat(name, color, nextId);
+    else if (type === "bird") newAnimal = new Bird(name, color, nextId);
+
+    animals.push(newAnimal);
+    nextId++;
+  } else {
+    // EDIT existing animal
+    animals[editingIndex].name = name;
+    animals[editingIndex].color = color;
+    animals[editingIndex].animalType = type;
+    editingIndex = -1;
+    addAnimalBtn.textContent = "Add animal"; // restore default text
+  }
+
+  // Reset form
+  nameInput.value = "";
+  colorInput.value = "";
+  typeSelect.value = "";
+  renderList();
+  console.log(animals);
+}
+
+addAnimalBtn.addEventListener("click", addOrSaveAnimal);
