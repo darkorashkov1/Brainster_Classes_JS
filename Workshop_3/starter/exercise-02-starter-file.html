@@ -1,0 +1,45 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Exercise 02</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
+</head>
+
+<body class="container text-center mt-5">
+  <h1 class="mb-4">Personalized Greeting</h1>
+  <p id="greeting" class="h3 mb-3"></p>
+  <label for="userName" class="h5">Enter your name:</label>
+  <input type="text" id="userName" class="form-control mb-3" />
+  <button id="updatedGreetingButton" class="btn btn-primary">
+    Update Greeting
+  </button>
+
+  <script>
+
+    const button = document.querySelector("#updatedGreetingButton")
+    const greeting = document.querySelector('#greeting')
+
+    const updateGreeting = function () {
+
+      const userName = document.querySelector("#userName")
+
+      const currentHours = new Date().getHours()
+
+      if (currentHours >= 5 && currentHours < 12) {
+        greeting.innerText = `Good morning ${userName.value}`;
+      } else if (currentHours >= 12 && currentHours < 18) {
+        greeting.innerText = `Good afternoon ${userName.value}`;
+      } else {
+        greeting.innerText = `Good evening ${userName.value}`;
+      }
+    }
+
+    button.addEventListener('click', updateGreeting)
+
+  </script>
+</body>
+
+</html>

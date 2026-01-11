@@ -1,0 +1,65 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Exercise 04</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
+</head>
+
+<body class="container text-center mt-5">
+  <h1 class="mb-4">World Clock</h1>
+
+  <!-- Dropdown menu for time zones -->
+  <div class="form-group">
+    <label for="timezoneSelect" class="h5">Select a time zone:</label>
+    <select id="timezoneSelect" class="form-control">
+      <option value="America/New_York">New York</option>
+      <option value="Europe/London">London</option>
+      <option value="Asia/Tokyo">Tokyo</option>
+      <option value="Europe/Belgrade">Belgrade</option>
+      <!-- Add more options for different cities/time zones as needed -->
+    </select>
+  </div>
+
+  <!-- Display the current time in the selected time zone -->
+  <div id="clock" class="h3 mt-3"></div>
+
+  <script>
+
+    const clock = document.querySelector('#clock');
+    const timezoneSelect = document.querySelector('#timezoneSelect');
+    timezoneSelect.addEventListener('change', updateClock);
+
+    function updateClock() {
+      const selectedTimezone = timezoneSelect.value;
+      const now = new Date();
+
+      const dateString = now.toLocaleTimeString("en-UK", {
+        timeZone: selectedTimezone,
+      })
+
+      clock.innerHTML = dateString;
+
+      //   const options = {
+      //     timeZone: selectedTimezone,
+      //     hour: '2-digit',
+      //     minute: '2-digit',
+      //     second: '2-digit',
+      //     hour12: false,
+      //   };
+      //   const formatter = new Intl.DateTimeFormat([], options);
+      //   const now = new Date();
+      //   clock.textContent = formatter.format(now);
+    }
+
+    // Update the clock every second
+    setInterval(updateClock, 1000);
+
+    // Initial call to display the clock immediately
+
+  </script>
+</body>
+
+</html>

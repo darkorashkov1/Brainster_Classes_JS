@@ -1,0 +1,77 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Exercise 03</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
+</head>
+
+<body class="container text-center mt-5">
+  <h1 class="mb-4">Age Calculator</h1>
+  <label for="birthdate" class="h5">Enter your birthdate:</label>
+  <input type="date" id="birthdate" class="form-control mb-3" />
+  <button id="calculateAge" class="btn btn-primary">
+    Calculate Age
+  </button>
+  <div id="result" class="h3 mt-3"></div>
+
+  <script>
+
+    const result = document.querySelector('#result')
+    const calculateAgeBtn = document.querySelector("#calculateAge")
+    const birthdate = document.querySelector('#birthdate')
+
+    class AgeCalculator {
+      constructor(birthdate) {
+        this.birthdate = new Date(birthdate)
+      }
+
+      calculateAge() {
+        const now = new Date()
+
+        const years = now.getFullYear() - this.birthdate.getFullYear()
+
+        const birthdateThisYear = new Date(
+          now.getFullYear(),
+          this.birthdate.getMonth(),
+          this.birthdate.getDate()
+        )
+
+        if (now < birthdateThisYear) {
+          // users birthday is in the future this year
+          return {
+            years: years - 1,
+            months: 12 - (this.birthdate.getMonth() + 1)
+          }
+        } else {
+          const months = now.getMonth() - this.birthdate.getMonth()
+
+          return {
+            years: years,
+            months: months,
+          }
+        }
+      }
+    }
+
+    function ageDisplay() {
+      const date = birthdate.value
+
+      if (date) {
+        const ageCalculator = new AgeCalculator(date);
+        const { years, months } = ageCalculator.calculateAge()
+
+        result.innerText = `Your age is ${years} years and ${months} months`
+      } else {
+        result.innerText = `Please enter your birthdate`
+      }
+    }
+
+    calculateAgeBtn.addEventListener('click', ageDisplay)
+
+  </script>
+</body>
+
+</html>
