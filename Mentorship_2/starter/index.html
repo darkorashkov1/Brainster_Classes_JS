@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mentorship 07</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" />
+
+  <style>
+    body {
+      background: #fff;
+    }
+
+    #bookList {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 30px;
+      margin-top: 30px;
+    }
+
+    /* ==== BOOK DESIGN ==== */
+
+    .bookWrap {
+      height: 346px;
+      width: 230px;
+      position: relative;
+      perspective: 1200px;
+      margin: auto;
+    }
+
+    .book {
+      background: greenyellow;
+      height: 346px;
+      width: 230px;
+      position: absolute;
+      left: 16px;
+      top: 0;
+
+      transform-style: preserve-3d;
+      transition: transform 0.5s ease;
+      border-radius: 0 7px 7px 0;
+      perspective: 1200px;
+    }
+
+    .bookIntro {
+      transform: rotateY(30deg);
+    }
+
+    .cover {
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 230px;
+      backface-visibility: hidden;
+      border-radius: 0 4px 4px 0;
+      transform-origin: left;
+      transition: transform 0.5s ease, width 0.5s ease;
+
+      background: linear-gradient(135deg, #f8f9fa, #dee2e6);
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    .cover:hover {
+      width: 210px;
+      transform: rotateY(-20deg);
+    }
+
+    .spine {
+      background: sandybrown;
+      width: 40px;
+      height: 344px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform: rotateY(90deg);
+      transform-origin: left;
+    }
+
+    .cover h4 {
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .cover p {
+      font-size: 14px;
+      margin: 0;
+    }
+
+    .cover span {
+      display: inline-block;
+      margin-top: 10px;
+      background: #6c757d;
+      color: white;
+      padding: 4px 8px;
+      font-size: 12px;
+      border-radius: 4px;
+    }
+
+    .delete-btn {
+      position: absolute;
+      bottom: 12px;
+      right: 12px;
+
+      background: transparent;
+      border: none;
+      padding: 0;
+
+      font-size: 22px;
+      line-height: 1;
+      color: #555;
+
+      cursor: pointer;
+      transition: transform 0.2s ease, color 0.2s ease;
+    }
+
+    .delete-btn:hover {
+      color: #000;
+      transform: scale(1.2);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container mt-5">
+    <h2>Add Book</h2>
+
+    <input type="text" id="title" class="form-control mt-2" placeholder="Title" />
+    <input type="text" id="author" class="form-control mt-2" placeholder="Author" />
+    <input type="text" id="category" class="form-control mt-2" placeholder="Category" />
+
+    <button id="addBookBtn" class="btn btn-primary mt-3">Add Book</button>
+
+    <hr />
+
+    <input type="text" id="filterCategory" class="form-control mt-2" placeholder="Filter by Category" />
+
+    <h2 class="mt-4">Book List</h2>
+    <div id="bookList"></div>
+  </div>
+
+  <script src="./script.js"> </script>
+</body>
+
+</html>
