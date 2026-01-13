@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Challenge 5</title>
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <style>
+    body {
+      background: linear-gradient(135deg, #7ec850, #5ea623);
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .form-card {
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    }
+  </style>
+</head>
+
+<body class="min-h-screen flex flex-col items-center py-10">
+  <!-- Employee List will be injected here -->
+  <div id="employeeContainer" class="w-full max-w-sm"></div>
+
+  <!-- Email Form will be injected here -->
+  <div id="emailContainer" class="w-full max-w-md"></div>
+
+  <script src="./script.js"></script>
+</body>
+
+</html>
