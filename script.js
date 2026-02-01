@@ -1,81 +1,119 @@
-const todos = [];
-
 class ToDo {
   constructor(title, status, id) {
-    this.id = id;
     this.title = title;
     this.status = status;
+    this.id = id;
   }
 }
 
-const form = document.querySelector("form");
+const STORAGE_KEY = "todos";
+
+// Load todos from localStorage
+const loadTodos = () => {
+  const storedTodos = localStorage.getItem(STORAGE_KEY);
+  return storedTodos ? JSON.parse(storedTodos) : [];
+};
+
+// Save todos to localStorage
+const saveTodos = () => {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(todos));
+};
+
+const todos = loadTodos();
+
+const todoForm = document.querySelector("form");
 const todoInput = document.getElementById("todoInput");
 const todoList = document.getElementById("todoList");
 
-// Create button function
+// Generate button
 const createButton = (label, classes) => {
   const button = document.createElement("button");
   button.textContent = label;
   button.classList.add(...classes);
-
   return button;
 };
 
-const onFormSubmit = (element) => {
-  element.preventDefault();
+// Render ONE todo
+const renderItem = (item) => {
+  const { id, title, status } = item;
 
-  const todoValue = todoInput.value.trim();
+  const listItem = document.createElement("li");
+  listItem.className = "todo-item";
+  listItem.dataset.id = id;
 
-  if (todoValue === "") {
-    alert("Please enter a valid to-do item.");
-    return;
-  }
+  const label = document.createElement("label");
+  label.textContent = title;
 
-  const newTodo = new ToDo(todoValue, false, Date.now().valueOf());
-  todos.push(newTodo);
-  form.reset();
+  if (status) label.classList.add("done");
 
-  // Generating a to-do
-  const renderItem = (item) => {
-    const { id, title, status } = item;
+  const checkbox = document.createElement("input");
+  checkbox.type = "checkbox";
+  checkbox.checked = status;
+  checkbox.style.display = "none";
 
-    // List item
-    const listItem = document.createElement("li");
-    listItem.className = "todo-item";
-    listItem.setAttribute("data-id", id);
+  checkbox.addEventListener("change", () => {
+    item.status = !item.status;
+    label.classList.toggle("done");
+    saveTodos();
+  });
 
-    // Label
-    const label = document.createElement("label");
-    label.htmlFor = id;
-    label.textContent = title;
+  // Delete
+  const deleteButton = createButton("Delete", ["button", "delete-button"]);
+  deleteButton.addEventListener("click", () => {
+    if (!confirm("Are you sure you want to delete?")) return;
 
-    // Checkbox
-    const checkbox = document.createElement("input");
-    checkbox.style.display = "none";
-    checkbox.type = "checkbox";
-    checkbox.checked = status;
-    checkbox.id = id;
+    todoList.removeChild(listItem);
+    const index = todos.findIndex((t) => t.id === id);
+    todos.splice(index, 1);
+    saveTodos();
+  });
 
-    // Buttons
-    const deleteButton = createButton("Delete", ["button", "delete-button"]);
-    const editButton = createButton("Edit", ["button", "edit-button"]);
+  // Edit
+  const editButton = createButton("Edit", ["button", "edit-button"]);
+  const editingInput = document.createElement("input");
+  let isEditing = false;
 
-    const buttonContainer = document.createElement("div");
-    buttonContainer.classList.add("buttons");
+  editButton.addEventListener("click", () => {
+    if (isEditing) {
+      item.title = editingInput.value;
+      label.textContent = editingInput.value;
+      editingInput.remove();
+      label.style.display = "block";
+      editButton.textContent = "Edit";
+      saveTodos();
+    } else {
+      editingInput.value = item.title;
+      listItem.prepend(editingInput);
+      label.style.display = "none";
+      editingInput.focus();
+      editButton.textContent = "Update";
+    }
+    isEditing = !isEditing;
+  });
 
-    listItem.appendChild(label);
-    listItem.appendChild(checkbox);
-    listItem.appendChild(buttonContainer);
+  const buttonContainer = document.createElement("div");
+  buttonContainer.classList.add("buttons");
 
-    buttonContainer.append(editButton, deleteButton);
-
-    // listItem.append(checkbox, label, buttonContainer);
-
-    todoList.appendChild(listItem);
-  };
-
-  renderItem(newTodo);
-  // localStorage.setItem("todos", JSON.stringify(todos));
+  buttonContainer.append(editButton, deleteButton);
+  listItem.append(label, checkbox, buttonContainer);
+  todoList.appendChild(listItem);
 };
 
-form.addEventListener("submit", onFormSubmit);
+// Handle form submit
+const onFormSubmit = (e) => {
+  e.preventDefault();
+
+  const todoValue = todoInput.value.trim();
+  if (!todoValue) return;
+
+  const newTodo = new ToDo(todoValue, false, Date.now());
+  todos.push(newTodo);
+  saveTodos();
+  renderItem(newTodo);
+  todoForm.reset();
+};
+
+// Initial render (IMPORTANT)
+todos.forEach(renderItem);
+
+todoForm.addEventListener("submit", onFormSubmit);
