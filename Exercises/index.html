@@ -2,65 +2,40 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Exercises</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Exercise</title>
 
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      padding: 20px;
-    }
-
-    nav {
-      margin-bottom: 20px;
-    }
-
-    nav button {
-      margin-right: 10px;
-      padding: 10px 20px;
-    }
-
-    .active {
-      font-weight: bold;
-    }
-
-    li {
-      list-style: none;
-      margin: 5px 0;
-    }
-
-    input {
-      margin-bottom: 10px;
-      padding: 5px;
-      width: 200px;
-    }
-  </style>
-
+  <link rel="stylesheet" href="./style.css" />
 </head>
 
 <body>
-
   <nav>
-    <button id="homeBtn" class="active">Home</button>
-    <button id="aboutBtn">About</button>
-    <button id="contactBtn">Contact</button>
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
   </nav>
 
-  <div id="homePage">
-    <input type="text" id="searchInput" placeholder="Search people by name">
-    <ul id="peopleList"></ul>
-  </div>
-  <div id="aboutPage" style="display:none;">
-    <h2>About</h2>
-    <p>This is a demo About page.</p>
-  </div>
-  <div id="contactPage" style="display:none;">
-    <h2>Contact</h2>
-    <p>This is a demo Contact page.</p>
-  </div>
+  <div class="container">
+    <section id="home">
+      <input id="search" placeholder="Type to search by name..." class="form-control my-2" type="search"
+        autocomplete="off" />
+      <select id="filterProfession">
+        <!-- fill dynamically -->
+      </select>
+      <ul id="list" class="list-group"></ul>
+    </section>
 
-  <script src="./script.js"></script>
+    <section id="about">
+      <h3>About</h3>
+    </section>
+
+    <section id="contact">
+      <h3>Contact</h3>
+    </section>
+  </div>
+  <script src="./script1.js"></script>
 </body>
+
 
 </html>
