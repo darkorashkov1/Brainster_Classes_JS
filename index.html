@@ -2,13 +2,43 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Cookbook</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="./Cookbook/styles/reset.css">
+  <link rel="stylesheet" href="./Cookbook/styles/materialize.min.css">
+  <link rel="stylesheet" href="./Cookbook/styles/cookbook.css">
 </head>
 
 <body>
+  <main>
+    <header class="lime lighten-3 z-depth-3">
+      <h1>Cook</h1>
+      <i class="material-icons large">restaurant_menu</i>
+      <h1>Book</h1>
+    </header>
+    <h2 class="subtitle grey-text">What are we cooking today? </h2>
 
+    <section id="search-container"></section>
+
+    <section id="filters"></section>
+
+    <section id="card-container"></section>
+
+    <section id="full-recipe-container">
+      This is the recipe container
+    </section>
+
+    <section id="tag-container"></section>
+
+    <section id="myId">this is my section</section>
+  </main>
+  <script src="./Cookbook/js/materialize.min.js"></script>
+  <script src="./Cookbook/js/db-recipes.js"></script>
+  <script src="./Cookbook/js/cookbook.js"></script>
 </body>
 
 </html>
