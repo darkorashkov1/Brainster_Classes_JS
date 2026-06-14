@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Bikes</title>
+	<meta name="keywords" content="html,css,javaScript">
+	<meta name="description" content="Bikes">
+	<meta name="author" content="">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+	<!-- Latest compiled and minified BOOTSTRAP CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+	<!-- Local CSS -->
+	<link rel="stylesheet" type="text/css" href="./css/style.css">
+
+	<!-- Font-awesome 5 cdn -->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+		integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+</head>
+
+<body>
+	<nav class="navbar-custom">
+
+		<div class="logo">
+			<img src="./img/logo.png" alt="Logo">
+		</div>
+
+		<ul class="nav-menu">
+			<li><a href="#">HOME</a></li>
+			<li><a href="#">BIKES</a></li>
+			<li><a href="#">GEAR</a></li>
+			<li><a href="#">PARTS</a></li>
+			<li><a href="#">TIRES</a></li>
+			<li><a href="#">SERVICE-INFO</a></li>
+			<li><a href="#">CATALOGUES</a></li>
+			<li><a href="#">CONTACT</a></li>
+		</ul>
+
+		<div class="nav-icons">
+			<i class="fas fa-search"></i>
+			<i class="fas fa-shopping-bag"></i>
+		</div>
+
+	</nav>
+
+	<div class="container-fluid">
+
+		<div class="row">
+			<div class="col-md-12">
+				<h1 class="page-title">Bikes</h1>
+			</div>
+		</div>
+
+		<div class="row">
+
+			<!-- Sidebar -->
+			<div class="col-md-3 sidebar">
+
+				<h2>Filter by:</h2>
+
+				<div class="filter-group">
+					<div class="filter-item active-filter" data-type="all">
+						<span>Show all</span>
+						<span class="badge" id="all-count">0</span>
+					</div>
+				</div>
+
+				<div class="filter-group">
+					<h4>Gender</h4>
+
+					<div class="filter-item" data-type="gender" data-value="male">
+						<span>Male</span>
+						<span class="badge" id="male-count">0</span>
+					</div>
+
+					<div class="filter-item" data-type="gender" data-value="female">
+						<span>Female</span>
+						<span class="badge" id="female-count">0</span>
+					</div>
+				</div>
+
+				<div class="filter-group">
+					<h4>Brand</h4>
+
+					<div id="brands-container"></div>
+				</div>
+
+			</div>
+
+			<!-- Products -->
+			<div class="col-md-9">
+
+				<div class="row" id="products-container">
+
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+
+	<footer class="footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<p>Copyright &copy; 2024</p>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+	<!-- jQuery library -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+	<script src="./js/main.js"></script>
+</body>
+
+</html>
